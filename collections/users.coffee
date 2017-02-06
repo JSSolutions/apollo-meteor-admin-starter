@@ -1,3 +1,5 @@
+Schemas = require('./_schemas').Schemas
+
 Schemas.UserProfile = new SimpleSchema(
 
   picture:
@@ -88,3 +90,5 @@ Meteor.users.attachSchema Schemas.User
 Meteor.users.helpers
   hasRole: (role) ->
     @roles?.indexOf(role) > -1
+
+module.exports = { usersSchema: Schemas.User }
