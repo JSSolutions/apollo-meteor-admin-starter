@@ -75,3 +75,4 @@ standard-minifier-js
 shell-server
 apollo
 ecmascript
+kuip:schema-graphql-bridge

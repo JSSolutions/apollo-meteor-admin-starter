@@ -1,5 +1,7 @@
 @Schemas = {}
 
+module.exports = { @Schemas }
+
 # Non collection Schemas
 Schemas.updatePassword = new SimpleSchema
   old:

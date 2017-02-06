@@ -1,0 +1,31 @@
+{
+  "name": "apollo-meteor-admin",
+  "version": "0.0.1",
+  "description": "Meteor Starter ==============",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-client": "^0.8.1",
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.16.0",
+    "babel-runtime": "^6.22.0",
+    "express": "^4.14.1",
+    "graphql": "^0.9.1",
+    "graphql-server-express": "^0.6.0",
+    "graphql-tools": "^0.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "meteor run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yogiben/meteor-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yogiben/meteor-starter/issues"
+  },
+  "homepage": "https://github.com/yogiben/meteor-starter#readme"
+}
