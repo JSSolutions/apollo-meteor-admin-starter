@@ -91,4 +91,4 @@ Meteor.users.helpers
   hasRole: (role) ->
     @roles?.indexOf(role) > -1
 
-module.exports = { usersSchema: Schemas.User }
+module.exports = { profileSchema: Schemas.UserProfile }

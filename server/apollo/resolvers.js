@@ -1,10 +1,9 @@
 import SchemaBridge from 'meteor/kuip:schema-graphql-bridge';
 
-import Posts from '../../collections/posts';
+import db from './connectors';
 import Users from '../../collections/users';
 
-const postResolvers = SchemaBridge.resolvers(Posts.schema, 'Post');
-const usersResolvers = SchemaBridge.resolvers(Users.usersSchema, 'User');
+const usersResolvers = SchemaBridge.resolvers(Users.profileSchema, 'User');
 
 // postResolvers.Post.title = (root, args, context) => {
 //   return 'I\'m title';
@@ -14,18 +13,9 @@ const usersResolvers = SchemaBridge.resolvers(Users.usersSchema, 'User');
 
 export const resolvers = {
   Query: {
-    say(root, args, context) {
-      // console.log(root, args, context);
-      return 'hello world';
-    },
-    posts() {
-      return Posts.Posts.find().fetch();
-    },
-    users() {
-      //console.log(Meteor.users.find().fetch());
-      return Meteor.users.find().fetch();
+    profile(_, args) {
+      return db.models.profile.findOne({ where: args })
     }
   },
-  Post: postResolvers.Post,
-  User: usersResolvers.User,
+  Profile: usersResolvers.User,
 };
