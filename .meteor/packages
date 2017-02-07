@@ -76,3 +76,5 @@ shell-server
 apollo
 ecmascript
 kuip:schema-graphql-bridge
+reactive-var
+underscore
