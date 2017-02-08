@@ -8,9 +8,28 @@ type Query {
   profile (userId: String): Profile,
 }
 
-schema {
-  query: Query
-}
 
 ${profileSchema}
+
+input ProfileData {
+  userId: String!
+  picture: String
+  firstName: String
+  lastName: String
+  birthday: String
+  bio: String
+  location: String
+  country: String
+}
+
+type Mutation {
+  updateProfile (
+    params: ProfileData!
+  ): String
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
 `;
