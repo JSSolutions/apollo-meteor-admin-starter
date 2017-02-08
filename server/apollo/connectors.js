@@ -10,15 +10,6 @@ const Conn = new Sequelize(
   }
 );
 
-/*
-  // what is this?
-
- services:
- type: Object
- optional: true
- blackbox: true
- */
-
 // const Person = Conn.define('person', {
 //   username: {
 //     type: Sequelize.STRING,
@@ -49,23 +40,12 @@ const Conn = new Sequelize(
 //   }
 // });
 
-/*
-  // need to save pictures somewhere
- picture:
- type: String
- optional:true
- label: 'Profile picture'
- autoform:
- afFieldInput:
- type: 'fileUpload'
- collection: 'ProfilePictures'
 
- */
 
 const Profile = Conn.define('profile', {
   userId: {
     type: Sequelize.STRING,
-    allowNull: false,
+    primaryKey: true,
   },
   picture: {
     type: Sequelize.STRING,
@@ -108,11 +88,6 @@ const Profile = Conn.define('profile', {
 // Person.hasMany(Role);
 // Role.belongsTo(Person);
 
-Conn.sync({ force: true }).then(() => {
-  Profile.create({
-    userId: '1',
-    firstName: 'Paul The Firtst',
-  })
-});
+Conn.sync();
 
 export default Conn;

@@ -14,21 +14,16 @@ const usersResolvers = SchemaBridge.resolvers(Users.profileSchema, 'User');
 export const resolvers = {
   Query: {
     profile(_, args, context) {
-      console.log('resolver called');
       if (context && context.userId) {
         return db.models.profile.findOne({ where: args })
       }
     }
   },
   Mutation: {
-    updateProfile(_, { params: { userId, ...profileData } }) {
-      console.log('mutation called');
-      return db.models.profile.update(profileData, { where: { userId } })
-        .then((numUpdated) => {
-          if (numUpdated) {
-            return "success"
-          }
-        });
+    updateProfile(_, { params: { ...profileData } }) {
+      return db.models.profile.upsert(profileData)
+        .then(() => 'success')
+        .catch(err => { throw new Error(err); })
     },
   },
   Profile: usersResolvers.User,

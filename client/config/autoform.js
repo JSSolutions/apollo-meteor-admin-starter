@@ -37,7 +37,7 @@ const reactiveUserDoc = new ReactiveVar({}, (oldValue, newValue) => {
 
 const fetchProfile = (doc) => {
   console.log('fetchProfile called ');
-  const query = getProfileQuery(1 | doc._id);
+  const query = getProfileQuery(doc._id);
   const newDoc = { ...doc };
   client.query({ query, pollInterval: 10000 })
     .then(({ data }) => {
@@ -54,15 +54,15 @@ AutoForm.hooks( {
       fetchProfile(doc);
       return reactiveUserDoc.get();
     },
-    onSubmit: function({ profile }) {
-      const mutation = getUpdateProfileQuery({ ...profile, userId: '1' });
-      client.mutate({ mutation })
+    onSubmit: function({ profile }, updateDoc, { _id }) {
+      const mutation = getUpdateProfileQuery({ ...profile, userId: _id });
+      client.mutate({ mutation, refetchQueries: [{ query: getProfileQuery(_id)}] })
         .then(res => {
-          if (res === 'success') {
+          if (res && res.data && res.data.updateProfile === 'success') {
             this.done();
           } else throw new Error("Wrong server response while saving mutation result");
         })
-        .catch(err => { throw new Error(e); });
+        .catch(err => { throw new Error(err); });
     },
   }
 });
