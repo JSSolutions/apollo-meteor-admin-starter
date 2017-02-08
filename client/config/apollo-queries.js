@@ -41,7 +41,7 @@ export const fetchProfile = (doc) => {
   const newDoc = { ...doc };
   client.query({ query, pollInterval: 10000 })
     .then(({ data: { profile } }) => {
-      if (profile.birthday) {
+      if (profile && profile.birthday) {
         profile.birthday = Date.parse(profile.birthday);
       }
       newDoc.profile = profile;

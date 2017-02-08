@@ -1,12 +1,12 @@
 import Sequelize from 'sequelize';
 
 const Conn = new Sequelize(
-  'meteor_users',
-  'root',
-  'root',
+  Meteor.settings.mysql.db_name,
+  Meteor.settings.mysql.db_user,
+  Meteor.settings.mysql.db_password,
   {
     dialect: 'mysql',
-    host: 'localhost',
+    host: Meteor.settings.mysql.db_host,
   }
 );
 

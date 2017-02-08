@@ -1,0 +1,8 @@
+{
+  "mysql": {
+    "db_host": "localhost",
+    "db_name": "meteor_users",
+    "db_user": "root",
+    "db_password": "root"
+  }
+}
