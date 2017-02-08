@@ -3,12 +3,11 @@ import queries from './apollo-queries';
 AutoForm.hooks( {
   adminUpdateUser: {
     docToForm (doc) {
-      queries.fetchProfile(doc);
-      return queries.reactiveUserDoc.get();
+      return queries.fetchProfile(doc);
     },
-    onSubmit: function({ profile }, updateDoc, { _id }) {
+    onSubmit: function(insertDoc, updateDoc, { _id }) {
       const done = this.done;
-      queries.updateProfile(profile, _id, done);
+      queries.updateProfile(insertDoc, updateDoc, _id, done);
     },
   }
 });

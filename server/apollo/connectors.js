@@ -10,6 +10,9 @@ const Conn = new Sequelize(
   }
 );
 
+// if you have existing db with users
+// you can try to create model automatically using sequelize-auto
+
 const Profile = Conn.define('profile', {
   userId: {
     type: Sequelize.STRING,

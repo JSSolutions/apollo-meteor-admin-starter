@@ -16,11 +16,12 @@ const getProfileQuery = (userId) => gql`
 }
 `;
 
-const getUpdateProfileQuery = (profileData) => {
+const getUpdateProfileQuery = (profileData, updateDoc) => {
   let stringQuery = '{';
-  Object.keys(profileData).forEach(k => {
-    if(profileData[k]) {
-      stringQuery += `${k}: "${profileData[k]}", `;
+  const allValues = { ...profileData, ...getRemoveFiedls(updateDoc) };
+  Object.keys(allValues).forEach(k => {
+    if(allValues[k] || allValues[k] === '') {
+      stringQuery += `${k}: "${allValues[k]}", `;
     }
   });
   stringQuery += '}';
@@ -47,10 +48,11 @@ export const fetchProfile = (doc) => {
       reactiveUserDoc.set(newDoc);
     })
     .catch(e => { throw new Error(e) });
+  return reactiveUserDoc.get();
 };
 
-export const updateProfile = (profile, userId, done) => {
-  const mutation = getUpdateProfileQuery({ ...profile, userId });
+export const updateProfile = ({ profile }, updateDoc, userId, done) => {
+  const mutation = getUpdateProfileQuery({ ...profile, userId }, updateDoc);
   client.mutate({ mutation, refetchQueries: [{ query: getProfileQuery(userId)}] })
     .then(res => {
       if (res && res.data && res.data.updateProfile === 'success') {
@@ -59,3 +61,12 @@ export const updateProfile = (profile, userId, done) => {
     })
     .catch(err => { throw new Error(err); });
 };
+
+function getRemoveFiedls({$unset}) {
+  return Object.keys($unset)
+    .filter(k => !!~k.indexOf('profile.') && !~k.indexOf('.birthday'))
+    .reduce((removeObject, k) => {
+      const key = k.slice(k.indexOf('.') + 1);
+      return {...removeObject, [key]: ''};
+    }, {})
+}
