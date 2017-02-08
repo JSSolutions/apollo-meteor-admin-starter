@@ -1,8 +1,7 @@
 {
   "name": "apollo-meteor-admin",
   "version": "0.0.1",
-  "description": "Meteor Starter ==============",
-  "main": "index.js",
+  "description": "demo apollo + autoform + meteor-admin integration",
   "dependencies": {
     "apollo-client": "^0.8.1",
     "babel-runtime": "^6.22.0",
@@ -20,14 +19,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "meteor run"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yogiben/meteor-starter.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yogiben/meteor-starter/issues"
-  },
-  "homepage": "https://github.com/yogiben/meteor-starter#readme"
+  "author": "uapasha",
+  "license": "MIT"
 }

@@ -1,5 +1,3 @@
-Schemas = require('./_schemas').Schemas
-
 @Posts = new Meteor.Collection('posts');
 
 Schemas.Posts = new SimpleSchema
@@ -53,7 +51,3 @@ Posts.helpers
 			user.profile.firstName + ' ' + user.profile.lastName
 		else
 			user?.emails?[0].address
-
-postsSchema = Schemas.Posts
-
-module.exports = { schema: postsSchema, Posts }

@@ -10,38 +10,6 @@ const Conn = new Sequelize(
   }
 );
 
-// const Person = Conn.define('person', {
-//   username: {
-//     type: Sequelize.STRING,
-//     allowNull: true,
-//     is: /^[a-z0-9A-Z_]{3,15}$/,
-//   },
-//   createdAt: {
-//     type: Sequelize.DATE,
-//     allowNull: false,
-//   },
-// });
-//
-// const Email = Conn.define('email', {
-//   address: {
-//     type: Sequelize.STRING,
-//     validate: {
-//       isEmail: true,
-//     },
-//   },
-//   verified: {
-//     type: Sequelize.BOOLEAN,
-//   },
-// });
-//
-// const Role = Conn.define('role', {
-//   role: {
-//     type: Sequelize.STRING,
-//   }
-// });
-
-
-
 const Profile = Conn.define('profile', {
   userId: {
     type: Sequelize.STRING,
@@ -76,17 +44,6 @@ const Profile = Conn.define('profile', {
     allowNull: true,
   },
 });
-
-// relationships
-
-// Person.hasOne(Profile);
-// Profile.belongsTo(Person);
-//
-// Person.hasMany(Email);
-// Email.belongsTo(Person);
-//
-// Person.hasMany(Role);
-// Role.belongsTo(Person);
 
 Conn.sync();
 

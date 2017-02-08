@@ -5,12 +5,6 @@ import Users from '../../collections/users';
 
 const usersResolvers = SchemaBridge.resolvers(Users.profileSchema, 'User');
 
-// postResolvers.Post.title = (root, args, context) => {
-//   return 'I\'m title';
-// };
-
-// console.dir(usersResolvers);
-
 export const resolvers = {
   Query: {
     profile(_, args, context) {
