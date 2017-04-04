@@ -33,3 +33,7 @@ model in connectors.js and make relative changes in ```Input type``` in schema.j
 - use observables in graphQL client
 - define relationships between SimpleSchema and Sequelize.js model
 - use dataIdFromObject in apollo client for correct caching
+
+-------------
+
+Made by [![Custom Software Development Company](https://s3-eu-west-1.amazonaws.com/jssolutions/github/jss_xs.png)](http://jssolutionsdev.com/?github=Databazel) - [Custom Software Development Company](http://jssolutionsdev.com/?github=Databazel)
